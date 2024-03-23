@@ -1,172 +1,137 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
+const ProductCard = ({ imageUrl, productName, price, discountPrice }) => {
+  return (
+    <div className="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-gray-700 shadow-md">
+      <Link
+        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
+        href="#"
+      >
+        <Image
+          className="peer absolute top-0 right-0 h-full w-full object-cover"
+          src={imageUrl}
+          alt="product image"
+          width={500}
+          height={500}
+        />
+        <Image
+          className="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0"
+          src={imageUrl}
+          alt="product image"
+          width={500}
+          height={500}
+        />
+        <svg
+          className="group-hover:animate-ping group-hover:opacity-30 peer-hover:opacity-0 pointer-events-none absolute inset-x-0 bottom-5 mx-auto text-3xl text-white transition-opacity"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          role="img"
+          width="1em"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 32 32"
+        >
+          <path
+            fill="currentColor"
+            d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z"
+          />
+        </svg>
+      </Link>
+      <div className="mt-4 px-5 pb-5">
+        <Link href="#">
+          <h5 className="text-xl tracking-tight text-white">{productName}</h5>
+        </Link>
+        <div className="mt-2 mb-5 flex items-center justify-between">
+          <p>
+            <span className="text-3xl font-bold text-white">{price}</span>
+            {discountPrice && (
+              <span className="text-sm text-white line-through">
+                {discountPrice}
+              </span>
+            )}
+          </p>
+        </div>
+        <Link
+          href="#"
+          className="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="mr-2 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          Add to cart
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const Tshirts = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap -m-4">
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                width={420}
-                height={260}
-                className="object-cover object-center w-full h-full block"
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                Shoes
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                Adidas Shoes
-              </h2>
-              <p className="mt-1">$16.00</p>
-              <button> Add to Cart </button>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                Shoes
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                Nike shoes
-              </h2>
-              <p className="mt-1">$21.15</p>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                CATEGORY
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                Neptune
-              </h2>
-              <p className="mt-1">$12.00</p>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                CATEGORY
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                The 400 Blows
-              </h2>
-              <p className="mt-1">$18.40</p>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                CATEGORY
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                The Catalyzer
-              </h2>
-              <p className="mt-1">$16.00</p>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                CATEGORY
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                Shooting Stars
-              </h2>
-              <p className="mt-1">$21.15</p>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                CATEGORY
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                Neptune
-              </h2>
-              <p className="mt-1">$12.00</p>
-            </div>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-            <a className="block relative h-48 rounded overflow-hidden">
-              <Image
-                alt="ecommerce"
-                className="object-cover object-center w-full h-full block"
-                width={420}
-                height={260}
-                src="https://source.unsplash.com/420x260/?Tshirt,ecommerce"
-              />
-            </a>
-            <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                CATEGORY
-              </h3>
-              <h2 className="text-gray-900 title-font text-lg font-medium">
-                The 400 Blows
-              </h2>
-              <p className="mt-1">$18.40</p>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          <ProductCard
+            imageUrl="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?a=b"
+            productName="Nike Air MX Super 2500 - Red"
+            price="$449"
+            discountPrice="$699"
+          />
+          {/* Add more ProductCard components here with different data */}
         </div>
       </div>
     </section>
